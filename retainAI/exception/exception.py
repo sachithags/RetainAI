@@ -1,12 +1,12 @@
 import sys
 from retainAI.logging import logger
 
-class RetainAI(Exception):
+class RetainAIException(Exception):
 
     def __init__(self, error_message, error_details: sys):
         super().__init__(error_message)
         self.error_message = error_message
-        _, _, exc_tb = error_details.exc_info()
+        _, _, exc_tb = sys.exc_info()
 
         self.lineno = exc_tb.tb_lineno
         self.file_name = exc_tb.tb_frame.f_code.co_filename
