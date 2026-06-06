@@ -1,3 +1,4 @@
+from itertools import count
 import os
 import sys
 import json
@@ -20,7 +21,11 @@ from retainAI.logging.logger import logging
 class RetainAI_DataExtracter():
     def __init__(self):
         try:
-            self.client = pymongo.MongoClient(MONGO_DB_URL, tlsCAFile=ca)
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
+            self.mongo_client = pymongo.MongoClient(
+                MONGO_DB_URL,
+                tlsCAFile=ca
+            )
             logging.info("MongoDB client initialized successfully.")
         except Exception as e:
             logging.error(f"Error initializing MongoDB client: {e}")
@@ -46,8 +51,13 @@ class RetainAI_DataExtracter():
             self.database = self.mongo_client[self.database]
             self.collection = self.database[self.collection]
             self.collection.insert_many(self.records)
-            return len(self.records)
+
+            count = self.collection.count_documents({})
+            print("Documents in collection:", count)
+
             logging.info("Data inserted successfully into MongoDB.")
+
+            return len(self.records)
         except Exception as e:
             logging.error(f"Error inserting data into MongoDB: {e}")
             raise RetainAIException(e, sys)
@@ -61,3 +71,4 @@ if __name__ == "__main__":
     print(records)
     no_of_records = networkobj.insert_data_to_mongodb(records,DATABASE, Collection)
     print(f"{no_of_records} records inserted successfully into MongoDB.")
+    
