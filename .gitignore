@@ -1,5 +1,9 @@
-venv
+venv/
 .env
+
 __pycache__/
 *.pyc
-*/__pycache__/
+*.pyo
+
+artifacts/
+logs/
