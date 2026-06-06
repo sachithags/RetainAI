@@ -74,13 +74,10 @@ class DataIngestion:
 
     def initiate_data_ingestion(self):
         try:
-            # 1. Get DataFrame from MongoDB
             dataframe = self.export_collection_as_dataframe()
-            
-            # 2. Save raw data to feature store (don't overwrite the DataFrame)
+
             self.export_data_into_feature_store(dataframe)
-            
-            # 3. Split into train/test (dataframe is still the real DataFrame)
+
             self.split_data_as_train_test(dataframe)
             
             # 4. Build and return the artifact
