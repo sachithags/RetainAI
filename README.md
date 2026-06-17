@@ -23,29 +23,6 @@ human‑readable memo with an LLM (Ollama / Gemini).
 - **GenAI:** LangChain, HuggingFace Embeddings, FAISS, Ollama
 - **Web:** FastAPI, Streamlit
 
-## Project Structure
-
-project-root/
-│
-├── artifacts/                    # Generated models, data, preprocessor
-│
-├── retainAI/
-│   ├── components/               # Data ingestion, validation, transformation, training
-│   ├── entity/                   # Config and artifact entities
-│   ├── pipeline/                 # Training and prediction pipelines
-│   └── utils/                    # Helper functions
-│
-├── config/
-│   └── schema.yaml               # Data validation schema
-│
-├── constants/                    # Paths, column names
-│
-├── app.py                        # FastAPI app
-├── streamlit_app.py              # Dashboard
-├── Dockerfile
-├── .github/workflows/            # CI/CD
-└── README.md
-
 ## Features
 
 - Modular ETL pipeline with data validation against a YAML schema
