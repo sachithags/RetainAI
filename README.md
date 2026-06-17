@@ -25,19 +25,25 @@ human‑readable memo with an LLM (Ollama / Gemini).
 
 ## Project Structure
 
-├── artifacts/                     # Generated models, data, preprocessor
+project-root/
+│
+├── artifacts/                    # Generated models, data, preprocessor
+│
 ├── retainAI/
-│   ├── components/                # Data ingestion, validation, transformation, training
-│   ├── entity/                    # Config and artifact entities
-│   ├── pipeline/                  # Training and prediction pipelines
-│   └── utils/                     # Helper functions
+│   ├── components/               # Data ingestion, validation, transformation, training
+│   ├── entity/                   # Config and artifact entities
+│   ├── pipeline/                 # Training and prediction pipelines
+│   └── utils/                    # Helper functions
+│
 ├── config/
-│   └── schema.yaml                # Data validation schema
-├── constants/                     # Paths, column names
-├── app.py                         # FastAPI app
-├── streamlit_app.py               # Dashboard
+│   └── schema.yaml               # Data validation schema
+│
+├── constants/                    # Paths, column names
+│
+├── app.py                        # FastAPI app
+├── streamlit_app.py              # Dashboard
 ├── Dockerfile
-├── .github/workflows/             # CI/CD
+├── .github/workflows/            # CI/CD
 └── README.md
 
 ## Features
