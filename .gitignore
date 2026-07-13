@@ -1,9 +1,10 @@
+*.pyo
+logs/
 venv/
-.env
-
 __pycache__/
 *.pyc
-*.pyo
-
-artifacts/
-logs/
+.DS_Store
+.env
+Artifacts/          
+*.mp3
+response.mp3
