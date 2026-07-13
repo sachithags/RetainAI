@@ -1,0 +1,9 @@
+Parental Leave:
+- All employees are entitled to 16 weeks of paid parental leave.
+
+Sick Leave:
+- Employees receive 10 paid sick days per year.
+- Unused sick days do not carry over to the next year.
+
+Vacation:
+- Employees earn 15 vacation days per year, increasing to 20 after 5 years of service.

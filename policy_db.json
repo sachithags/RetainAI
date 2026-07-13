@@ -1,0 +1,102 @@
+[
+  {
+    "policy_id": "P001",
+    "policy_text": "Flexible working hours (remote work up to 3 days per week)",
+    "conditions": { "Department": ["Sales","Research & Development","Human Resources"], "JobLevel": [1,2,3,4,5], "OverTime": ["Yes"], "WorkLifeBalance": [1,2] }
+  },
+  {
+    "policy_id": "P002",
+    "policy_text": "Enrollment in advanced certification programme (full funding)",
+    "conditions": { "Department": ["Research & Development","Human Resources"], "JobLevel": [1,2], "PerformanceRating": [3,4], "YearsAtCompany": 1 }
+  },
+  {
+    "policy_id": "P003",
+    "policy_text": "One‑time retention bonus of 10% of annual salary",
+    "conditions": { "Department": ["Sales"], "JobSatisfaction": [1,2], "MonthlyIncome": 10000 }
+  },
+  {
+    "policy_id": "P004",
+    "policy_text": "Team lead mentorship programme",
+    "conditions": { "YearsAtCompany": 1, "PerformanceRating": [3,4], "JobInvolvement": [1,2] }
+  },
+  {
+    "policy_id": "P005",
+    "policy_text": "Sabbatical leave (up to 3 months) with job guarantee",
+    "conditions": { "YearsAtCompany": 5, "WorkLifeBalance": [1,2], "EnvironmentSatisfaction": [1,2] }
+  },
+  {
+    "policy_id": "P006",
+    "policy_text": "Promotion track fast‑track (review within 3 months)",
+    "conditions": { "YearsSinceLastPromotion": 2, "PerformanceRating": [3,4], "JobLevel": [1,2,3] }
+  },
+  {
+    "policy_id": "P007",
+    "policy_text": "Employee Assistance Programme (counselling, legal, financial advisory)",
+    "conditions": { "WorkLifeBalance": [1,2], "EnvironmentSatisfaction": [1,2] }
+  },
+  {
+    "policy_id": "P008",
+    "policy_text": "Internal mobility programme – transfer to another department",
+    "conditions": { "YearsInCurrentRole": 3, "JobSatisfaction": [1,2], "Department": ["Sales","Research & Development","Human Resources"] }
+  },
+  {
+    "policy_id": "P009",
+    "policy_text": "Leadership shadowing programme",
+    "conditions": { "JobLevel": [1,2], "PerformanceRating": [4], "YearsAtCompany": 1 }
+  },
+  {
+    "policy_id": "P010",
+    "policy_text": "Childcare support subsidy (on‑site creche or reimbursement)",
+    "conditions": { "MaritalStatus": ["Married"], "Age": 28, "WorkLifeBalance": [1,2] }
+  },
+  {
+    "policy_id": "P011",
+    "policy_text": "Extended health insurance (including parents)",
+    "conditions": { "Age": 40, "Department": ["Sales","Research & Development","Human Resources"] }
+  },
+  {
+    "policy_id": "P012",
+    "policy_text": "Company‑sponsored MBA (partial reimbursement)",
+    "conditions": { "Education": [3,4,5], "JobLevel": [1,2,3], "PerformanceRating": [4] }
+  },
+  {
+    "policy_id": "P013",
+    "policy_text": "Four‑day work week pilot programme",
+    "conditions": { "Department": ["Research & Development"], "JobLevel": [1,2], "WorkLifeBalance": [1,2] }
+  },
+  {
+    "policy_id": "P014",
+    "policy_text": "On‑site gym membership & wellness programme",
+    "conditions": { "EnvironmentSatisfaction": [1,2], "WorkLifeBalance": [1,2] }
+  },
+  {
+    "policy_id": "P015",
+    "policy_text": "Transport allowance increase (20%)",
+    "conditions": { "DistanceFromHome": 15, "Department": ["Sales","Research & Development","Human Resources"] }
+  },
+  {
+    "policy_id": "P016",
+    "policy_text": "Stock option refresh grant",
+    "conditions": { "StockOptionLevel": [0,1], "YearsAtCompany": 3, "PerformanceRating": [3,4] }
+  },
+  {
+    "policy_id": "P017",
+    "policy_text": "International assignment opportunity (6‑12 months)",
+    "conditions": { "JobLevel": [2,3,4], "PerformanceRating": [4], "YearsAtCompany": 2, "Department": ["Sales","Research & Development"] }
+  },
+  {
+    "policy_id": "P018",
+    "policy_text": "Personal development budget (₹1,00,000/year)",
+    "conditions": { "YearsAtCompany": 1, "PerformanceRating": [3,4] }
+  },
+  {
+    "policy_id": "P019",
+    "policy_text": "Peer recognition programme & spot awards",
+    "conditions": { "JobInvolvement": [1,2], "JobSatisfaction": [1,2] }
+  },
+  {
+    "policy_id": "P020",
+    "policy_text": "Dedicated career coach (monthly sessions)",
+    "conditions": { "YearsAtCompany": 1, "JobLevel": [1,2,3] }
+  }
+]

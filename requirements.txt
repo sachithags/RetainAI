@@ -6,3 +6,16 @@ certifi
 scikit-learn
 dill
 pyaml
+fastapi
+uvicorn
+xgboost
+imbalanced-learn
+pyyaml
+streamlit
+requests
+faiss-cpu
+sentence-transformers
+langchain
+langchain-community
+groq
+pypdf
