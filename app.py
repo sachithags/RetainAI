@@ -5,12 +5,29 @@ import joblib
 import json
 import os
 
-# ─── Load model, preprocessor, and policy DB ───
-model = joblib.load("model.pkl")
-preprocessor = joblib.load("preprocessor.pkl")
+# ─── Global references (loaded lazily) ───
+_model = None
+_preprocessor = None
+_policies = None
 
-with open("policy_db.json", "r") as f:
-    POLICIES = json.load(f)
+def get_model():
+    global _model
+    if _model is None:
+        _model = joblib.load("model.pkl")
+    return _model
+
+def get_preprocessor():
+    global _preprocessor
+    if _preprocessor is None:
+        _preprocessor = joblib.load("preprocessor.pkl")
+    return _preprocessor
+
+def get_policies():
+    global _policies
+    if _policies is None:
+        with open("policy_db.json", "r") as f:
+            _policies = json.load(f)
+    return _policies
 
 # ─── CSS ───
 custom_css = """
@@ -37,8 +54,9 @@ def render_result_card(proba):
 
 # ─── Deterministic policy engine ───
 def match_policies(emp):
+    policies = get_policies()
     matched = []
-    for p in POLICIES:
+    for p in policies:
         cond = p["conditions"]
         ok = True
         for key, val in cond.items():
@@ -78,6 +96,9 @@ def predict_attrition(
     YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion,
     YearsWithCurrManager
 ):
+    model = get_model()
+    preprocessor = get_preprocessor()
+
     emp = {
         "Age": Age, "BusinessTravel": BusinessTravel, "DailyRate": DailyRate,
         "Department": Department, "DistanceFromHome": DistanceFromHome,
@@ -101,7 +122,6 @@ def predict_attrition(
     transformed = preprocessor.transform(df)
     proba = model.predict_proba(transformed)[0][1]
 
-    # Build premium HTML card
     risk_msg = render_result_card(proba)
 
     if proba >= 0.5:
@@ -133,7 +153,7 @@ def load_random():
             "Female", 40, 2, 1, "Human Resources", 3, "Divorced", 4500, 8000,
             1, "No", 10, 3, 3, 80, 0, 6, 3, 3, 2, 2, 0, 2]
 
-# ─── RAG tab function (lazy import) ───
+# ─── RAG tab function ───
 def rag_answer(query):
     if not query.strip():
         return "Please enter a question.", ""
@@ -141,7 +161,7 @@ def rag_answer(query):
     try:
         from groq import Groq
         from langchain_community.vectorstores import FAISS
-        from langchain_huggingface import HuggingFaceEmbeddings
+        from langchain_community.embeddings import HuggingFaceEmbeddings
     except ImportError as e:
         return f"RAG dependencies missing: {e}", ""
 
@@ -292,4 +312,4 @@ with gr.Blocks(title="RetainAI") as demo:
             ask_btn = gr.Button("Ask")
             ask_btn.click(fn=rag_answer, inputs=query_box, outputs=[answer_box, sources_box])
 
-demo.launch()
+demo.launch(server_name="0.0.0.0", theme=theme, css=custom_css)

@@ -31,15 +31,15 @@ class DataIngestion:
 
     def export_collection_as_dataframe(self):
         try:
-            database_name = self.data_ingestion_config.database_name
-            collection_name = self.data_ingestion_config.collection_name
-            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
-            collection = self.mongo_client[database_name][collection_name]
-            df = pd.DataFrame(list(collection.find()))
-            if"_id" in df.columns.to_list():
+            # Use the local CSV file instead of MongoDB
+            csv_path = os.path.join("RetainAI_data", "HR_Employee_Attrition.csv")
+            df = pd.read_csv(csv_path)
+            # Drop any existing '_id' column if it came from a previous MongoDB export
+            if "_id" in df.columns:
                 df.drop("_id", axis=1, inplace=True)
-
+            # Replace any 'na' strings with actual NaN (to match previous logic)
             df.replace(to_replace="na", value=np.nan, inplace=True)
+            logging.info(f"Read {df.shape[0]} rows from {csv_path}")
             return df
         except Exception as e:
             raise RetainAIException(e, sys)

@@ -76,3 +76,38 @@ class DataValidationConfig:
             training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR,
             training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME
         )
+
+class DataTransformationConfig:
+    def __init__(self, training_pipeline_config):
+        self.transformed_dir = os.path.join(
+            training_pipeline_config.artifact_dir,
+            training_pipeline.DATA_TRANSFORMATION_DIR_NAME
+        )
+        self.transformed_train_file_path = os.path.join(
+            self.transformed_dir,
+            training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
+            training_pipeline.DATA_TRANSFORMATION_TRAIN_FILE_NAME
+        )
+        self.transformed_test_file_path = os.path.join(
+            self.transformed_dir,
+            training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
+            training_pipeline.DATA_TRANSFORMATION_TEST_FILE_NAME
+        )
+        self.transformed_object_file_path = os.path.join(
+            self.transformed_dir,
+            training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR,
+            training_pipeline.PREPROCESSING_OBJECT_FILE_NAME
+        )
+
+class ModelTrainerConfig:
+    def __init__(self, training_pipeline_config):
+        self.model_trainer_dir = os.path.join(
+            training_pipeline_config.artifact_dir,
+            training_pipeline.MODEL_TRAINER_DIR_NAME
+        )
+        self.trained_model_file_path = os.path.join(
+            self.model_trainer_dir,
+            training_pipeline.MODEL_TRAINER_TRAINED_MODEL_DIR,
+            training_pipeline.MODEL_TRAINER_TRAINED_MODEL_FILE_NAME
+        )
+        self.expected_score = training_pipeline.MODEL_TRAINER_EXPECTED_SCORE
